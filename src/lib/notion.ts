@@ -15,9 +15,28 @@ export interface BlogPost {
 }
 
 const notionApiKey = process.env.NOTION_API_KEY;
-const notionDatabaseId = process.env.NOTION_DATABASE_ID;
 
 const notion = notionApiKey ? new Client({ auth: notionApiKey }) : null;
+
+interface NotionPageObject {
+  id: string;
+  url?: string;
+  created_time?: string;
+  parent?: {
+    type?: string;
+  };
+  cover?: {
+    external?: { url?: string };
+    file?: { url?: string };
+  };
+  properties?: Record<string, {
+    title?: Array<{ plain_text?: string }>;
+    rich_text?: Array<{ plain_text?: string }>;
+    type?: string;
+    people?: Array<{ name?: string }>;
+    multi_select?: Array<{ name?: string }>;
+  }>;
+}
 
 export const FALLBACK_BLOG_POSTS: BlogPost[] = [
   {
@@ -68,27 +87,57 @@ export async function fetchNotionBlogPosts(): Promise<BlogPost[]> {
       filter: { property: 'object', value: 'page' },
     });
 
-    if (!searchRes || !searchRes.results || searchRes.results.length === 0) {
+    const rawResults = (searchRes?.results || []) as unknown as NotionPageObject[];
+
+    if (!rawResults || rawResults.length === 0) {
       return FALLBACK_BLOG_POSTS;
     }
 
-    const posts: BlogPost[] = searchRes.results
-      .filter((page: any) => page.properties && page.properties.Name?.title && page.properties.Name.title.length > 0)
-      .map((page: any, index: number) => {
+    const filteredResults = rawResults.filter((page: NotionPageObject) => {
+      if (!page.properties) return false;
+
+      // Exclude workspace root pages or database container pages
+      if (page.parent?.type === 'workspace') return false;
+
+      const props = page.properties;
+      const titleText =
+        props.Name?.title?.[0]?.plain_text ||
+        props.Title?.title?.[0]?.plain_text ||
+        '';
+
+      const cleanTitle = titleText.trim().toLowerCase();
+      // Exclude empty titles or generic database titles like "blog post" or "blog posts"
+      if (!cleanTitle || cleanTitle === 'blog post' || cleanTitle === 'blog posts' || cleanTitle === 'untitled article') {
+        return false;
+      }
+
+      return true;
+    });
+
+    // Sort by created_time descending (newest first)
+    filteredResults.sort((a, b) => {
+      const timeA = a.created_time ? new Date(a.created_time).getTime() : 0;
+      const timeB = b.created_time ? new Date(b.created_time).getTime() : 0;
+      return timeB - timeA;
+    });
+
+    const posts: BlogPost[] = filteredResults
+      .slice(0, 9)
+      .map((page: NotionPageObject, index: number) => {
         const props = page.properties || {};
         const titleText = props.Name?.title?.[0]?.plain_text || props.Title?.title?.[0]?.plain_text || 'Untitled Article';
         const excerptText = props.Description?.rich_text?.[0]?.plain_text || props.Excerpt?.rich_text?.[0]?.plain_text || 'Read full article on Notion...';
         
         let authorText = 'Thernika R';
         if (props.Author) {
-          if (props.Author.type === 'people' && props.Author.people?.length > 0) {
+          if (props.Author.type === 'people' && props.Author.people && props.Author.people.length > 0) {
             authorText = props.Author.people[0].name || 'Thernika R';
-          } else if (props.Author.type === 'rich_text' && props.Author.rich_text?.length > 0) {
+          } else if (props.Author.type === 'rich_text' && props.Author.rich_text && props.Author.rich_text.length > 0) {
             authorText = props.Author.rich_text[0].plain_text || 'Thernika R';
           }
         }
 
-        const tagsList = props.Tags?.multi_select?.map((t: any) => t.name) || ['Psychology', 'Wellbeing'];
+        const tagsList = props.Tags?.multi_select?.map((t) => t.name).filter((name): name is string => Boolean(name)) || ['Psychology', 'Wellbeing'];
         const cover = page.cover?.external?.url || page.cover?.file?.url || FALLBACK_BLOG_POSTS[index % 3].coverImage;
         const pageUrl = page.url || `https://notion.so/${page.id.replace(/-/g, '')}`;
 

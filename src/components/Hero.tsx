@@ -45,7 +45,7 @@ export default function Hero() {
               <div className="badge-shine p-3 rounded-xl flex items-start gap-2.5">
                 <Award className="w-5 h-5 text-[#d97706] dark:text-amber-400 shrink-0 mt-0.5" />
                 <span className="text-xs font-semibold text-stone-800 dark:text-stone-100 leading-snug">
-                  IMA Award Winner (Maternal Care)
+                  IMA Award: Best Contribution for Pregnant Mothers
                 </span>
               </div>
             </div>

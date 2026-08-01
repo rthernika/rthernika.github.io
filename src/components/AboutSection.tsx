@@ -11,10 +11,30 @@ export default function AboutSection() {
   ];
 
   const milestones = [
-    { title: 'Founder & Head Psychologist', org: 'Purnam Counselling', period: 'Present', desc: 'Providing 1-on-1 psychotherapy, maternal mental care, and institutional training.' },
-    { title: 'IMA Award for Maternal Care', org: 'Indian Medical Association', period: '2022', desc: 'Recognized for outstanding contribution to perinatal mental health and labor fear resolution.' },
-    { title: 'Institutional Student Counsellor', org: 'Hindustan Educational Institutions', period: 'Past', desc: 'Conducted student mediation, stress relief workshops, and faculty conflict resolution.' },
-    { title: 'Community Outreach Facilitator', org: 'Gaura Foundation & Vellalar Trust', period: 'Ongoing', desc: 'Delivering grassroots emotional resilience workshops across Tamil Nadu.' },
+    {
+      title: 'Psychologist (Self-Employed)',
+      org: 'Purnam Counselling',
+      period: 'March 2024 - Present',
+      desc: 'Conducting 1-on-1 online & offline counseling, offering emotional support to expectant mothers during labor & childbirth, and facilitating institutional workshops.',
+    },
+    {
+      title: 'Student Counsellor',
+      org: 'Hindustan Educational Trust',
+      period: 'June 2026 - Present',
+      desc: 'Providing social-emotional support and mediating student-teacher and student-parent conflicts for constructive resolution.',
+    },
+    {
+      title: 'Pregnancy Counsellor',
+      org: 'Gaura Foundation',
+      period: 'Sept 2020 - Present',
+      desc: 'Conducted weekly online sessions on Perinatal Mental Health, brain changes during pregnancy, labor, breastfeeding, emotional intelligence & nutrition. Built a dedicated community for pre- & post-natal wellbeing.',
+    },
+    {
+      title: 'Student Counsellor & Assistant Professor',
+      org: 'Vellalar Educational Trust',
+      period: 'March 2016 - March 2024',
+      desc: 'Counselled students on academic & personal issues, handled faculty selection & admissions, and lectured on Personality Assessment and Organizational Behavior.',
+    },
   ];
 
   return (
@@ -58,21 +78,21 @@ export default function AboutSection() {
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 bg-[#d97706]/20 text-[#d97706] text-xs font-bold px-3 py-1 rounded-full border border-[#d97706]/30">
                 <Award className="w-4 h-4 text-amber-300" />
-                <span className="text-amber-200">2022 Indian Medical Association Recognition</span>
+                <span className="text-amber-200">IMA Coimbatore Recognition (2022)</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold font-serif">
-                IMA Award Winner for Exceptional Maternal Care
+                IMA Award: &quot;Best Contribution for Pregnant Mothers&quot;
               </h3>
               <p className="text-stone-200 text-sm sm:text-base leading-relaxed">
-                Honored by the Indian Medical Association for outstanding clinical counseling in labor anxiety, antenatal psychological preparedness, and postnatal emotional recovery.
+                Awarded by the Indian Medical Association (Coimbatore) in 2022 for outstanding dedication and clinical counseling in perinatal mental health, labor preparation, and emotional support for expectant mothers.
               </p>
             </div>
 
             <div className="lg:col-span-4 flex justify-center lg:justify-end">
               <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl text-center space-y-2">
                 <span className="text-4xl">🏆</span>
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-300">IMA Excellence</p>
-                <p className="text-xs text-stone-200">Maternal & Perinatal Health</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-amber-300">IMA Excellence Award</p>
+                <p className="text-xs text-stone-200">Best Contribution for Pregnant Mothers</p>
               </div>
             </div>
           </div>
