@@ -6,6 +6,12 @@ import Link from 'next/link';
 import { Menu, X, Calendar, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
+interface NavLink {
+  name: string;
+  href: string;
+  highlight?: boolean;
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,14 +25,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Specializations', href: '#pillars' },
+    { name: 'Services', href: '#pillars' },
     { name: '1-on-1 Counselling', href: '#counselling' },
     { name: 'Workshops', href: '#workshops' },
     { name: 'Media', href: '#media' },
-    { name: 'Blog', href: '#blog', highlight: true },
     { name: 'Contact', href: '#contact' },
   ];
 
