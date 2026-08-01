@@ -7,18 +7,21 @@ export default function WorkshopsSection() {
   const workshops = [
     {
       title: 'Emotional Intelligence & Personality Assessment',
-      target: 'Students, Faculty & Corporate Teams',
+      targets: ['Students', 'Faculty', 'Corporate Teams'],
       desc: 'Interactive modules evaluating psychological strengths, stress tolerance, personality profiles, and interpersonal empathy.',
+      pillStyle: 'bg-amber-50 dark:bg-amber-950/40 text-[#d97706] dark:text-amber-300 border-amber-200 dark:border-amber-700/40',
     },
     {
       title: 'Brain Changes During Pregnancy, Labor & Nutrition',
-      target: 'Hospitals, Fertility Clinics & Pregnant Couples',
+      targets: ['Hospitals', 'Fertility Clinics', 'Pregnant Couples'],
       desc: 'Science-backed guidance on neurological adaptations during gestation, labor anxiety management, and postnatal mental health.',
+      pillStyle: 'bg-pink-50 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300 border-pink-200 dark:border-pink-800/40',
     },
     {
       title: 'Organizational Behavior & Conflict Mediation',
-      target: 'Educational Institutions & Department Heads',
+      targets: ['Educational Trusts', 'Department Heads', 'Faculty Teams'],
       desc: 'Structured conflict resolution models for student-teacher friction, peer mediation, and positive institutional culture.',
+      pillStyle: 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/40',
     },
   ];
 
@@ -56,10 +59,17 @@ export default function WorkshopsSection() {
               key={idx}
               className="glass-card glass-card-hover rounded-3xl p-8 space-y-4 flex flex-col justify-between border border-stone-200 dark:border-emerald-800/40"
             >
-              <div className="space-y-3">
-                <span className="text-[11px] font-bold text-[#d97706] dark:text-amber-300 uppercase tracking-wider bg-amber-50 dark:bg-amber-900/30 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-700/40">
-                  {w.target}
-                </span>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {w.targets.map((target, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${w.pillStyle}`}
+                    >
+                      {target}
+                    </span>
+                  ))}
+                </div>
                 <h3 className="text-xl font-bold text-stone-900 dark:text-white font-serif leading-snug">
                   {w.title}
                 </h3>
@@ -72,8 +82,16 @@ export default function WorkshopsSection() {
                 <span className="font-semibold text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
                   <CalendarCheck className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400" /> Interactive Sessions
                 </span>
-                <a href="#contact" className="text-[#d97706] dark:text-amber-400 font-bold hover:underline">
-                  Request Proposal →
+                <a
+                  href={`mailto:thernika.purnam@gmail.com?subject=${encodeURIComponent(
+                    `Workshop Proposal Request: ${w.title}`
+                  )}&body=${encodeURIComponent(
+                    `Dear Thernika,\n\nI would like to request a proposal for the workshop: "${w.title}".\n\nInstitution / Organization Name:\nTarget Audience & Estimated Group Size:\nPreferred Dates / Timeline:\nContact Number:\n\nThank you!`
+                  )}`}
+                  className="text-[#d97706] dark:text-amber-400 font-bold hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Request Proposal</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>

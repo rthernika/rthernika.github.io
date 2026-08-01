@@ -116,7 +116,7 @@ export default function Footer() {
                 <a href="#media" className="hover:text-white transition-colors">Media & Community</a>
               </li>
               <li>
-                <a href="#blog" className="hover:text-amber-400 font-semibold text-amber-300 transition-colors">Purnam Blog (Notion)</a>
+                <a href="#blog" className="hover:text-amber-400 font-semibold text-amber-300 transition-colors">Newsletter</a>
               </li>
             </ul>
           </div>
