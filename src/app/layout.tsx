@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 
@@ -69,6 +70,19 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body className="font-sans antialiased bg-[#fcfbfa] dark:bg-[#0d1a15] text-[#1c2826] dark:text-[#f3f4f6] transition-colors duration-300">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SNJ1BR55KK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SNJ1BR55KK');
+          `}
+        </Script>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Building2, Users2, CalendarCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Building2, CalendarCheck, ArrowRight } from 'lucide-react';
 
 export default function WorkshopsSection() {
   const workshops = [

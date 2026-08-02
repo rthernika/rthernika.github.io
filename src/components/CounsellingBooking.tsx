@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Video, Clock, ShieldCheck, CheckCircle2, Heart, GraduationCap, ExternalLink, Sparkles, ArrowRight, Users } from 'lucide-react';
+import { Calendar, Video, Clock, ShieldCheck, CheckCircle2, Heart, GraduationCap, Sparkles, ArrowRight, Users } from 'lucide-react';
 
 export default function CounsellingBooking() {
   const counsellingCards = [
