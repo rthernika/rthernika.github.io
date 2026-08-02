@@ -38,11 +38,6 @@ jobs:
 
       - name: Build static export
         run: npm run build
-        env:
-          # Notion API credentials injected from GitHub Secrets
-          # Go to: Settings → Secrets & variables → Actions → New repository secret
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
       - name: Add .nojekyll file
         # Prevents GitHub Pages from processing files with underscores (Next.js _next/ folder)
