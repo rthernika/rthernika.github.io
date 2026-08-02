@@ -4,12 +4,6 @@ import React from 'react';
 import { Award, GraduationCap, Briefcase, Globe, CheckCircle, Sparkles, ShieldCheck, ExternalLink } from 'lucide-react';
 
 export default function AboutSection() {
-  const qualifications = [
-    { degree: 'M.Sc Applied Psychology', institution: 'Bharathiar University', focus: 'Clinical & Counselling Psychology' },
-    { degree: 'MBA in HRM', institution: 'Jansons School of Business', focus: 'Organizational Behavior & Grievance Handling' },
-    { degree: 'B.E Computer Science', institution: 'Anna University', focus: 'Technical Logic & Analytical Problem Solving' },
-  ];
-
   const milestones = [
     {
       title: 'Psychologist (Self-Employed)',
@@ -54,23 +48,6 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Qualifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {qualifications.map((q, i) => (
-            <div key={i} className="glass-card glass-card-hover p-6 rounded-3xl space-y-4 border border-stone-200 dark:border-emerald-800/40">
-              <div className="w-12 h-12 rounded-2xl bg-[#1e3d32]/10 dark:bg-emerald-500/20 text-[#1e3d32] dark:text-emerald-300 flex items-center justify-center">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-stone-900 dark:text-white font-serif">{q.degree}</h3>
-                <p className="text-xs font-semibold text-[#3d7a64] dark:text-emerald-400">{q.institution}</p>
-              </div>
-              <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed border-t border-stone-100 dark:border-emerald-900/50 pt-3">
-                Specialized in {q.focus}.
-              </p>
-            </div>
-          ))}
-        </div>
 
         {/* Honors & Professional Awards Grid */}
         <div className="space-y-6 mb-16">
@@ -220,10 +197,10 @@ export default function AboutSection() {
               Skills & Certifications
             </h3>
 
-            {/* Core Clinical & Facilitation Skills */}
+            {/* Core Counselling & Facilitation Skills */}
             <div className="bg-stone-50 dark:bg-[#182c24] rounded-3xl p-6 border border-stone-200 dark:border-emerald-800/40 space-y-4">
               <p className="text-xs font-bold text-[#1e3d32] dark:text-emerald-300 uppercase tracking-wider">
-                Core Clinical & Facilitation Skills
+                Core Counselling & Facilitation Skills
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-700 dark:text-stone-200">
                 <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Individual & Group Counselling</span>
@@ -232,6 +209,8 @@ export default function AboutSection() {
                 <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Public Speaking & Workshops</span>
                 <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Personality Assessment</span>
                 <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Grievance Handling</span>
+                <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Emotional Resilience Training</span>
+                <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-[#3d7a64] dark:text-emerald-400 shrink-0" /> Academic Stress Management</span>
               </div>
             </div>
 

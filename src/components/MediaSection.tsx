@@ -85,29 +85,8 @@ const INITIAL_YOUTUBE_SHORTS: YouTubeShort[] = [
 const INITIAL_LINKEDIN_ARTICLES: LinkedInArticle[] = [
   {
     id: '1',
-    title: 'Understanding Core and Intermediate Beliefs',
-    url: 'https://www.linkedin.com/pulse/understanding-core-intermediate-beliefs-psyschpro-xkp2c',
-    imageUrl:
-      'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
-  },
-  {
-    id: '2',
-    title: 'What Psychology Teaches Us About High Performers',
-    url: 'https://www.linkedin.com/pulse/what-psychology-teaches-us-high-performers-psyschpro-4ygoc',
-    imageUrl:
-      'https://media.licdn.com/dms/image/v2/D5612AQF7Iml2O3iLUA/article-cover_image-shrink_720_1280/B56Z1Ep8DYG8AI-/0/1774973340482?e=2147483647&v=beta&t=TFP57n6miY2udRcERv0bATO-iJeIL6DvE_G6TmDDmOs',
-  },
-  {
-    id: '3',
-    title: 'Understanding Suicidality Beyond Diagnosis',
-    url: 'https://www.linkedin.com/pulse/understanding-suicidality-beyond-diagnosis-psyschpro-yoric',
-    imageUrl:
-      'https://media.licdn.com/dms/image/v2/D5612AQGRwJgmsbJCzA/article-cover_image-shrink_720_1280/B56Zxs8E.gKcAI-/0/1771354217211?e=2147483647&v=beta&t=hW1_VjuvM-JM975mS7krsEs1brgHM-lQ1UIgoUFjsMI',
-  },
-  {
-    id: '4',
-    title: 'Perinatal Wellbeing & Emotional Resilience',
-    url: 'https://www.linkedin.com/newsletters/the-psychology-brief-7429594361061040128/',
+    title: 'The Healing Corner by Purnam',
+    url: 'https://www.linkedin.com/newsletters/7430605949259751424/',
     imageUrl:
       'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
   },
@@ -159,10 +138,10 @@ export default function MediaSection() {
       color: 'bg-pink-50 dark:bg-pink-950/40 text-pink-600 dark:text-pink-400 border-pink-200 dark:border-pink-800/40',
     },
     {
-      title: 'The Psychology Brief',
+      title: 'The Healing Corner',
       handle: 'LinkedIn Newsletter',
       linkText: 'Read & Subscribe on LinkedIn',
-      url: 'https://www.linkedin.com/newsletters/the-psychology-brief-7429594361061040128/',
+      url: 'https://www.linkedin.com/newsletters/7430605949259751424/',
       isLinkedin: true,
       color: 'bg-blue-50 dark:bg-blue-950/40 text-[#0a66c2] dark:text-blue-400 border-blue-200 dark:border-blue-800/40',
     },
@@ -196,7 +175,13 @@ export default function MediaSection() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className={`p-3 rounded-2xl border ${card.color}`}>
+                    <a
+                      href={card.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-3 rounded-2xl border transition-all duration-300 hover:scale-110 ${card.color}`}
+                      title={card.linkText}
+                    >
                       {card.isYoutube ? (
                         <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -212,10 +197,16 @@ export default function MediaSection() {
                       ) : Icon ? (
                         <Icon className="w-6 h-6" />
                       ) : null}
-                    </div>
-                    <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-[#192e27] px-3 py-1 rounded-full">
+                    </a>
+                    <a
+                      href={card.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-semibold text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-[#192e27] hover:bg-stone-200 dark:hover:bg-[#234237] hover:text-stone-800 dark:hover:text-stone-200 px-3 py-1 rounded-full transition-all"
+                      title={card.linkText}
+                    >
                       {card.handle}
-                    </span>
+                    </a>
                   </div>
 
                   <h3 className="text-xl font-bold text-stone-900 dark:text-white font-serif">{card.title}</h3>

@@ -26,8 +26,10 @@ export default function JsonLd() {
         'https://instagram.com/thernika.purnam',
         'https://youtube.com/@thernika.purnam',
         'https://linkedin.com/in/rthernika',
+        'https://www.linkedin.com/newsletters/7430605949259751424/',
         'https://cal.id/thernika',
       ],
+      'publishingPrinciples': 'https://www.linkedin.com/newsletters/7430605949259751424/',
       'medicalSpecialty': 'https://schema.org/Psychiatric',
       'knowsAbout': [
         'Psychological Services',
@@ -82,8 +84,26 @@ export default function JsonLd() {
         'https://instagram.com/thernika.purnam',
         'https://youtube.com/@thernika.purnam',
         'https://linkedin.com/in/rthernika',
+        'https://www.linkedin.com/newsletters/7430605949259751424/',
         'https://cal.id/thernika',
       ],
+      'publishingPrinciples': 'https://www.linkedin.com/newsletters/7430605949259751424/',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Periodical',
+      'name': 'The Healing Corner',
+      'url': 'https://www.linkedin.com/newsletters/7430605949259751424/',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Purnam Counselling',
+        'url': 'https://rthernika.github.io/',
+      },
+      'author': {
+        '@type': 'Person',
+        'name': 'Thernika R',
+      },
+      'description': 'Empowering you with knowledge for a healthier mind and body.',
     },
   ];
 

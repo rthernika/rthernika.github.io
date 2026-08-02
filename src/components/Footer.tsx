@@ -108,7 +108,7 @@ export default function Footer() {
                 <a href="#about" className="hover:text-white transition-colors">About Thernika</a>
               </li>
               <li>
-                <a href="#pillars" className="hover:text-white transition-colors">Services</a>
+                <a href="#services" className="hover:text-white transition-colors">Services</a>
               </li>
               <li>
                 <a href="#counselling" className="hover:text-white transition-colors">1-on-1 Counselling</a>

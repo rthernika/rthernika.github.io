@@ -56,7 +56,7 @@ export default function PillarsSection() {
   ];
 
   return (
-    <section id="pillars" className="py-20 bg-stone-100/60 dark:bg-[#0d1a15] relative transition-colors duration-300">
+    <section id="services" className="py-20 bg-stone-100/60 dark:bg-[#0d1a15] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">

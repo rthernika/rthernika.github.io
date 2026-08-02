@@ -28,7 +28,7 @@ export default function Header() {
   const navLinks: NavLink[] = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#pillars' },
+    { name: 'Services', href: '#services' },
     { name: '1-on-1 Counselling', href: '#counselling' },
     { name: 'Workshops', href: '#workshops' },
     { name: 'Media', href: '#media' },
@@ -99,7 +99,9 @@ export default function Header() {
 
             {/* Book Session CTA */}
             <a
-              href="#counselling"
+              href="https://cal.id/thernika"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#1e3d32] dark:bg-emerald-700 hover:bg-[#2c5949] dark:hover:bg-emerald-600 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               <Calendar className="w-4 h-4 text-[#d97706] dark:text-amber-300" />
@@ -149,7 +151,9 @@ export default function Header() {
 
             <div className="pt-2 border-t border-stone-200 dark:border-emerald-800/40 mt-1 flex flex-col gap-2">
               <a
-                href="#counselling"
+                href="https://cal.id/thernika"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#1e3d32] dark:bg-emerald-700 text-white text-base font-medium py-3 rounded-full shadow-md"
               >

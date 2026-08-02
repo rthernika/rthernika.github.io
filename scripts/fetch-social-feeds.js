@@ -113,29 +113,8 @@ async function updateFeeds() {
   let linkedinArticles = [
     {
       id: '1',
-      title: 'Understanding Core and Intermediate Beliefs',
-      url: 'https://www.linkedin.com/pulse/understanding-core-intermediate-beliefs-psyschpro-xkp2c',
-      imageUrl:
-        'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
-    },
-    {
-      id: '2',
-      title: 'What Psychology Teaches Us About High Performers',
-      url: 'https://www.linkedin.com/pulse/what-psychology-teaches-us-high-performers-psyschpro-4ygoc',
-      imageUrl:
-        'https://media.licdn.com/dms/image/v2/D5612AQF7Iml2O3iLUA/article-cover_image-shrink_720_1280/B56Z1Ep8DYG8AI-/0/1774973340482?e=2147483647&v=beta&t=TFP57n6miY2udRcERv0bATO-iJeIL6DvE_G6TmDDmOs',
-    },
-    {
-      id: '3',
-      title: 'Understanding Suicidality Beyond Diagnosis',
-      url: 'https://www.linkedin.com/pulse/understanding-suicidality-beyond-diagnosis-psyschpro-yoric',
-      imageUrl:
-        'https://media.licdn.com/dms/image/v2/D5612AQGRwJgmsbJCzA/article-cover_image-shrink_720_1280/B56Zxs8E.gKcAI-/0/1771354217211?e=2147483647&v=beta&t=hW1_VjuvM-JM975mS7krsEs1brgHM-lQ1UIgoUFjsMI',
-    },
-    {
-      id: '4',
-      title: 'Perinatal Wellbeing & Emotional Resilience',
-      url: 'https://www.linkedin.com/newsletters/the-psychology-brief-7429594361061040128/',
+      title: 'The Healing Corner by Purnam',
+      url: 'https://www.linkedin.com/newsletters/7430605949259751424/',
       imageUrl:
         'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
     },
