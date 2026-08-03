@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Award, GraduationCap, Briefcase, Globe, CheckCircle, Sparkles, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Award, GraduationCap, Briefcase, Globe, CheckCircle, Sparkles, ShieldCheck, ExternalLink, Download } from 'lucide-react';
 
 export default function AboutSection() {
   const milestones = [
@@ -280,6 +280,20 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Download Resume Button */}
+        <div className="mt-12 text-center">
+          <a
+            href="/Resources/Thernika_Resume.pdf"
+            download="Thernika_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 bg-[#1e3d32] hover:bg-[#2c5949] dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          >
+            <Download className="w-5 h-5 text-amber-400 dark:text-amber-300" />
+            <span>Download Resume (PDF)</span>
+          </a>
         </div>
       </div>
     </section>
