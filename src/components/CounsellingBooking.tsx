@@ -122,7 +122,7 @@ export default function CounsellingBooking() {
               className="inline-flex items-center gap-3 bg-white text-[#1e3d32] hover:bg-amber-50 text-base font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
             >
               <Calendar className="w-5 h-5 text-[#d97706]" />
-              <span>Book your appointment at Cal.id</span>
+              <span>Book appointment</span>
               <ArrowRight className="w-4 h-4 text-[#1e3d32]" />
             </a>
           </div>
