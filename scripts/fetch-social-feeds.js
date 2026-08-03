@@ -113,12 +113,85 @@ async function updateFeeds() {
   let linkedinArticles = [
     {
       id: '1',
-      title: 'The Healing Corner by Purnam',
-      url: 'https://www.linkedin.com/newsletters/7430605949259751424/',
+      title: 'Why Multitasking Is Secretly Ruining Your Productivity (And Your Brain)',
+      url: 'https://www.linkedin.com/pulse/why-multitasking-secretly-ruining-your-productivity-brain-rajendran-txqzf',
       imageUrl:
-        'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
+        'https://media.licdn.com/dms/image/v2/D4D12AQFGuJRH5Dre4A/article-cover_image-shrink_600_2000/B4DZ_EyMmrJwAM-/0/1785712921231?e=2147483647&v=beta&t=Xytbavr_ZvCyP_KjkMqObl1foM_YOAaCbHs-m6QjQIk',
     },
   ];
+
+  try {
+    const liHtml = await fetchUrl('https://www.linkedin.com/newsletters/7430605949259751424/');
+    const pulseRegex = /href="(https:\/\/www\.linkedin\.com\/pulse\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+    const fetchedLi = [];
+    const seenUrls = new Set();
+    let match;
+    while ((match = pulseRegex.exec(liHtml)) !== null) {
+      const url = match[1];
+      let title = match[2].replace(/<[^>]+>/g, '').trim();
+      if (title && !title.toLowerCase().includes('report') && !seenUrls.has(url)) {
+        seenUrls.add(url);
+
+        let imageUrl =
+          'https://media.licdn.com/dms/image/v2/D4D12AQFGuJRH5Dre4A/article-cover_image-shrink_600_2000/B4DZ_EyMmrJwAM-/0/1785712921231?e=2147483647&v=beta&t=Xytbavr_ZvCyP_KjkMqObl1foM_YOAaCbHs-m6QjQIk';
+
+        try {
+          const articleHtml = await fetchUrl(url);
+          const ogMatch =
+            articleHtml.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i) ||
+            articleHtml.match(/<meta\s+content="([^"]+)"\s+property="og:image"/i);
+          if (ogMatch && ogMatch[1]) {
+            imageUrl = ogMatch[1].replace(/&amp;/g, '&');
+          }
+        } catch (e) {
+          // Keep default cover image
+        }
+
+        fetchedLi.push({
+          id: String(fetchedLi.length + 1),
+          title: title,
+          url: url,
+          imageUrl: imageUrl,
+        });
+      }
+    }
+    if (fetchedLi.length > 0) {
+      linkedinArticles = fetchedLi;
+      console.log(`Successfully fetched ${fetchedLi.length} LinkedIn articles from newsletter!`);
+    }
+  } catch (err) {
+    console.warn('Could not fetch dynamic LinkedIn newsletter feed, using baseline:', err.message);
+  }
+
+  const outputDir = path.join(__dirname, '../public/data');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const outputPath = path.join(outputDir, 'social-feeds.json');
+  let hasContentChanged = true;
+
+  if (fs.existsSync(outputPath)) {
+    try {
+      const existingRaw = fs.readFileSync(outputPath, 'utf8');
+      const existingData = JSON.parse(existingRaw);
+
+      const isYtSame = JSON.stringify(existingData.youtubeShorts) === JSON.stringify(youtubeShorts);
+      const isIgSame = JSON.stringify(existingData.instagramPosts) === JSON.stringify(instagramPosts);
+      const isLiSame = JSON.stringify(existingData.linkedinArticles) === JSON.stringify(linkedinArticles);
+
+      if (isYtSame && isIgSame && isLiSame) {
+        hasContentChanged = false;
+      }
+    } catch (e) {
+      hasContentChanged = true;
+    }
+  }
+
+  if (!hasContentChanged) {
+    console.log('No changes detected in social feed content. Skipping file write.');
+    return;
+  }
 
   const payload = {
     updatedAt: new Date().toISOString(),
@@ -127,12 +200,6 @@ async function updateFeeds() {
     linkedinArticles,
   };
 
-  const outputDir = path.join(__dirname, '../public/data');
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-
-  const outputPath = path.join(outputDir, 'social-feeds.json');
   fs.writeFileSync(outputPath, JSON.stringify(payload, null, 2));
   console.log(`Saved updated social feeds to ${outputPath}`);
 }

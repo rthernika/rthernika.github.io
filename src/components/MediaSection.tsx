@@ -85,10 +85,10 @@ const INITIAL_YOUTUBE_SHORTS: YouTubeShort[] = [
 const INITIAL_LINKEDIN_ARTICLES: LinkedInArticle[] = [
   {
     id: '1',
-    title: 'The Healing Corner by Purnam',
-    url: 'https://www.linkedin.com/newsletters/7430605949259751424/',
+    title: 'Why Multitasking Is Secretly Ruining Your Productivity (And Your Brain)',
+    url: 'https://www.linkedin.com/pulse/why-multitasking-secretly-ruining-your-productivity-brain-rajendran-txqzf',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D5612AQGYocdJjJ9ZIg/article-cover_image-shrink_720_1280/B56Z4ZCIjRIkAQ-/0/1778536450462?e=2147483647&v=beta&t=Xu8oDYtyaavVSJSnUnxAorbmu9zRNLnmCazNnP9uzw0',
+      'https://media.licdn.com/dms/image/v2/D4D12AQFGuJRH5Dre4A/article-cover_image-shrink_600_2000/B4DZ_EyMmrJwAM-/0/1785712921231?e=2147483647&v=beta&t=Xytbavr_ZvCyP_KjkMqObl1foM_YOAaCbHs-m6QjQIk',
   },
 ];
 
