@@ -19,34 +19,23 @@ function fetchUrl(url) {
 }
 
 async function updateFeeds() {
+  const outputDir = path.join(__dirname, '../public/data');
+  const outputPath = path.join(outputDir, 'social-feeds.json');
+  let existingData = null;
+
+  if (fs.existsSync(outputPath)) {
+    try {
+      existingData = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+    } catch (e) {
+      existingData = null;
+    }
+  }
+
   console.log('Fetching YouTube native RSS feed...');
 
-  let youtubeShorts = [
-    {
-      id: 'y-vzSV8XKtY',
-      title: 'Gifting versus Giving!',
-      url: 'https://www.youtube.com/shorts/y-vzSV8XKtY',
-      thumbnailUrl: 'https://i.ytimg.com/vi/y-vzSV8XKtY/hqdefault.jpg',
-    },
-    {
-      id: 'DTw6ucxhDS8',
-      title: 'Is summer vacation a necessity?',
-      url: 'https://www.youtube.com/shorts/DTw6ucxhDS8',
-      thumbnailUrl: 'https://i.ytimg.com/vi/DTw6ucxhDS8/hqdefault.jpg',
-    },
-    {
-      id: 'ftA4tneSous',
-      title: 'What is best for your child (strict or friendly parenting)?',
-      url: 'https://www.youtube.com/shorts/ftA4tneSous',
-      thumbnailUrl: 'https://i.ytimg.com/vi/ftA4tneSous/hqdefault.jpg',
-    },
-    {
-      id: 'cZ3wvh4PEMU',
-      title: 'Constant worry or fear?',
-      url: 'https://www.youtube.com/shorts/cZ3wvh4PEMU',
-      thumbnailUrl: 'https://i.ytimg.com/vi/cZ3wvh4PEMU/hqdefault.jpg',
-    },
-  ];
+  let youtubeShorts = (existingData && Array.isArray(existingData.youtubeShorts) && existingData.youtubeShorts.length > 0)
+    ? existingData.youtubeShorts
+    : [];
 
   try {
     const ytXml = await fetchUrl('https://www.youtube.com/feeds/videos.xml?channel_id=UCOTjeFfsoXwgHEjNy5Kizbw');
@@ -79,46 +68,55 @@ async function updateFeeds() {
     console.warn('Could not fetch dynamic YouTube RSS feed, using cached baseline:', err.message);
   }
 
-  let instagramPosts = [
-    {
-      id: '1',
-      title: 'Three things to teach your child🌸',
-      link: 'https://www.instagram.com/p/DbYBQEDJvHp',
-      imageUrl:
-        'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/759384042_18581153047067426_2077064107607264342_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&ig_cache_key=Mzk1MTkxNDE3NDkyMzYwMDM2MTE4NTgxMTUzMDQ0MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=6-mR2EdmPa0Q7kNvwGmxKLt&_nc_oc=AdokkdM5uCsqta3wvBRQURMlKW1H4rmG1WduGcpA9sZ0jWeRdeq0pDCHuppPS63poP4&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQFg36oCOjmhn8XzqlOWRc6e39vYh_l54_bELBcU6XPVTQ&oe=6A73BBE4',
-    },
-    {
-      id: '2',
-      title: 'Drop the word I and embrace the word thank you and sorry',
-      link: 'https://www.instagram.com/p/DbQR3IfpvEu',
-      imageUrl:
-        'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/755870260_18580292644067426_464278745766578888_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&_nc_cat=100&ig_cache_key=Mzk0OTczNTQyODY4NjgwMzI0Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMzA3Mi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=6ThwYE1ZJ_oQ7kNvwFNG0hw&_nc_oc=AdolB2pXwBjgNGnmtcW4PqCxAFh6SK0KXjLheC4i-JtzFlQkg1iuAMsXAZOBXBqBIio&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQEKyePv4ga8Ovi-349rEjVSYct3sQ5eLzstCj8ZCS5lVQ&oe=6A73E2E8',
-    },
-    {
-      id: '3',
-      title: 'Are you stuck in the possessiveness triangle?',
-      link: 'https://www.instagram.com/p/DbHcKyVJAzD',
-      imageUrl:
-        'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/753225000_18579350671067426_5161904364014136964_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=Mzk0NzI0NzQ4NDk1MjM4MjY1OTE4NTc5MzUwNjY4MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=o8iWeAWZXyAQ7kNvwEgXYui&_nc_oc=AdqJaWhKmEy59i4hHoG_wN08kIc3En13gB9BYhUNVKiAnQHMmWGvTansPtfvZ2idUkU&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQE-O0eEotbBEekl4rBNwgro-SOrN52VeAEXwqTQUJ9MmA&oe=6A73E0C2',
-    },
-    {
-      id: '4',
-      title: 'Planning to gift someone? Gifting vs Giving',
-      link: 'https://www.instagram.com/p/DanTSA5JpHc',
-      imageUrl:
-        'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/742103548_18575781745067426_4766865731777493039_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=104&ig_cache_key=MzkzODIwMTE5OTk1MTkwOTM0MDE4NTc1NzgxNzM5MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEyOTAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=a-GZpzhg5qsQ7kNvwHCpAFl&_nc_oc=Adq9uvSuren-U_YYC8uLy1iy0dz4U6Aa7S55Cajw7p1eZDz_rps9YvKJ3n8IWxfxvyM&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQF9kNrWh9Zl-Wh1pOkTW5iH3BYLSvyFtbFUlNzUAI9wcA&oe=6A73E015',
-    },
-  ];
+  let instagramPosts = (existingData && Array.isArray(existingData.instagramPosts) && existingData.instagramPosts.length > 0)
+    ? existingData.instagramPosts
+    : [];
 
-  let linkedinArticles = [
-    {
-      id: '1',
-      title: 'Why Multitasking Is Secretly Ruining Your Productivity (And Your Brain)',
-      url: 'https://www.linkedin.com/pulse/why-multitasking-secretly-ruining-your-productivity-brain-rajendran-txqzf',
-      imageUrl:
-        'https://media.licdn.com/dms/image/v2/D4D12AQFGuJRH5Dre4A/article-cover_image-shrink_600_2000/B4DZ_EyMmrJwAM-/0/1785712921231?e=2147483647&v=beta&t=Xytbavr_ZvCyP_KjkMqObl1foM_YOAaCbHs-m6QjQIk',
-    },
-  ];
+  try {
+    console.log('Fetching Instagram feed from Behold...');
+    const igRaw = await fetchUrl('https://feeds.behold.so/LrbLq2O4qmCkpMrslcFU');
+    const igData = JSON.parse(igRaw);
+
+    const postsList = Array.isArray(igData) ? igData : (igData && Array.isArray(igData.posts) ? igData.posts : []);
+
+    if (postsList.length > 0) {
+      const fetchedIg = postsList
+        .slice(0, 4)
+        .map((post, idx) => {
+          let rawCaption = post.prunedCaption || post.caption || '';
+          let title = rawCaption ? rawCaption.split('\n')[0].replace(/#\w+/g, '').trim() : '';
+
+          const imageUrl =
+            post.sizes?.medium?.mediaUrl ||
+            post.sizes?.large?.mediaUrl ||
+            post.sizes?.small?.mediaUrl ||
+            post.thumbnailUrl ||
+            post.mediaUrl ||
+            '';
+
+          if (!imageUrl) return null;
+
+          return {
+            id: String(post.id || idx + 1),
+            title: title || `Instagram Post #${idx + 1}`,
+            link: post.permalink || `https://www.instagram.com/p/${post.id}`,
+            imageUrl: imageUrl,
+          };
+        })
+        .filter(Boolean);
+
+      if (fetchedIg.length > 0) {
+        instagramPosts = fetchedIg;
+        console.log(`Successfully fetched ${fetchedIg.length} Instagram posts from Behold!`);
+      }
+    }
+  } catch (err) {
+    console.warn('Could not fetch dynamic Instagram feed from Behold, using baseline:', err.message);
+  }
+
+  let linkedinArticles = (existingData && Array.isArray(existingData.linkedinArticles) && existingData.linkedinArticles.length > 0)
+    ? existingData.linkedinArticles
+    : [];
 
   try {
     const liHtml = await fetchUrl('https://www.linkedin.com/newsletters/7430605949259751424/');
@@ -132,8 +130,7 @@ async function updateFeeds() {
       if (title && !title.toLowerCase().includes('report') && !seenUrls.has(url)) {
         seenUrls.add(url);
 
-        let imageUrl =
-          'https://media.licdn.com/dms/image/v2/D4D12AQFGuJRH5Dre4A/article-cover_image-shrink_600_2000/B4DZ_EyMmrJwAM-/0/1785712921231?e=2147483647&v=beta&t=Xytbavr_ZvCyP_KjkMqObl1foM_YOAaCbHs-m6QjQIk';
+        let imageUrl = '';
 
         try {
           const articleHtml = await fetchUrl(url);
@@ -163,19 +160,14 @@ async function updateFeeds() {
     console.warn('Could not fetch dynamic LinkedIn newsletter feed, using baseline:', err.message);
   }
 
-  const outputDir = path.join(__dirname, '../public/data');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const outputPath = path.join(outputDir, 'social-feeds.json');
   let hasContentChanged = true;
 
-  if (fs.existsSync(outputPath)) {
+  if (existingData) {
     try {
-      const existingRaw = fs.readFileSync(outputPath, 'utf8');
-      const existingData = JSON.parse(existingRaw);
-
       const isYtSame = JSON.stringify(existingData.youtubeShorts) === JSON.stringify(youtubeShorts);
       const isIgSame = JSON.stringify(existingData.instagramPosts) === JSON.stringify(instagramPosts);
       const isLiSame = JSON.stringify(existingData.linkedinArticles) === JSON.stringify(linkedinArticles);
