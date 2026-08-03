@@ -1,51 +1,30 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeft, FileText, AlertTriangle, CalendarCheck, ShieldAlert, BookOpen, Scale } from 'lucide-react';
+import { FileText, AlertTriangle, CalendarCheck, ShieldAlert, BookOpen, Scale } from 'lucide-react';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-[#faf8f5] dark:bg-[#091410] text-stone-800 dark:text-stone-100 flex flex-col selection:bg-[#1e3d32] selection:text-white transition-colors duration-300">
-      {/* Subpage Header */}
-      <header className="sticky top-0 z-40 bg-white/90 dark:bg-[#0d1c15]/90 backdrop-blur-md border-b border-stone-200 dark:border-emerald-900/30">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-[#d97706]/80 bg-[#1e3d32] p-1 flex items-center justify-center">
-              <Image src="/favicon.png" alt="Purnam Logo" width={40} height={40} className="object-contain" />
-            </div>
-            <div>
-              <span className="font-serif font-bold text-lg text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                Purnam Counselling
-              </span>
-              <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Psychologist Thernika R</p>
-            </div>
-          </Link>
-
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-emerald-600 dark:hover:text-emerald-400 bg-stone-100 dark:bg-emerald-950/60 px-4 py-2 rounded-full transition-all border border-stone-200 dark:border-emerald-800/40"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Legal Content Container */}
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
+      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 pt-28 pb-12 w-full">
         <div className="bg-white dark:bg-[#11221b] rounded-3xl p-6 sm:p-10 shadow-xl border border-stone-200 dark:border-emerald-800/30 space-y-8">
-          
           {/* Hero Banner */}
           <div className="flex items-center gap-4 pb-6 border-b border-stone-200 dark:border-emerald-800/30">
             <div className="p-3.5 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300">
               <FileText className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 dark:text-white">Terms of Service</h1>
-              <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400">Effective Date: August 2026 • Purnam Counselling</p>
+              <h1 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 dark:text-white">
+                Terms of Service
+              </h1>
+              <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400">
+                Effective Date: August 2026 • Purnam Counselling
+              </p>
             </div>
           </div>
 
@@ -63,7 +42,6 @@ export default function TermsOfServicePage() {
           </div>
 
           <div className="space-y-6 text-sm sm:text-base leading-relaxed text-stone-600 dark:text-stone-300">
-            
             {/* Section 1 */}
             <section className="space-y-3">
               <h2 className="text-lg font-bold font-serif text-stone-900 dark:text-emerald-300 flex items-center gap-2.5">
@@ -74,10 +52,18 @@ export default function TermsOfServicePage() {
                 Purnam Counselling, led by <strong>Thernika R</strong> (M.Sc Applied Psychology), provides professional psychological guidance, including:
               </p>
               <ul className="list-disc pl-6 space-y-2 marker:text-emerald-600 dark:marker:text-emerald-400">
-                <li><strong>1-on-1 Psychological Counselling:</strong> Online and offline individual support for emotional well-being, stress, and personal growth.</li>
-                <li><strong>Perinatal Mental Health Support:</strong> Specialist support for expectant and postnatal mothers, labor preparation, and maternal mental health.</li>
-                <li><strong>Student & Parent Counselling:</strong> Emotional support, academic guidance, and student-parent conflict resolution.</li>
-                <li><strong>Institutional & Corporate Workshops:</strong> Interactive mental health awareness programs and seminars.</li>
+                <li>
+                  <strong>1-on-1 Psychological Counselling:</strong> Online and offline individual support for emotional well-being, stress, and personal growth.
+                </li>
+                <li>
+                  <strong>Perinatal Mental Health Support:</strong> Specialist support for expectant and postnatal mothers, labor preparation, and maternal mental health.
+                </li>
+                <li>
+                  <strong>Student & Parent Counselling:</strong> Emotional support, academic guidance, and student-parent conflict resolution.
+                </li>
+                <li>
+                  <strong>Institutional & Corporate Workshops:</strong> Interactive mental health awareness programs and seminars.
+                </li>
               </ul>
             </section>
 
@@ -88,10 +74,18 @@ export default function TermsOfServicePage() {
                 2. Booking, Payment & Rescheduling Terms
               </h2>
               <ul className="list-disc pl-6 space-y-2.5 marker:text-emerald-600 dark:marker:text-emerald-400">
-                <li><strong>Booking Confirmation:</strong> Session appointments are secured upon scheduling via Cal.id and receiving confirmation.</li>
-                <li><strong>No Refund Clause:</strong> Payments made for individual sessions or workshops are non-refundable once booked. No exceptions or partial refunds will be provided for cancellations initiated by the client.</li>
-                <li><strong>Rescheduling Policy:</strong> If you need to reschedule a confirmed session, you must notify us at least <strong>24 hours in advance</strong>. Rescheduling requests made with less than 24 hours notice may be treated as a missed session and forfeited.</li>
-                <li><strong>Punctuality:</strong> Sessions begin promptly at the scheduled time. Arriving late will shorten the remaining duration of your session without extensions.</li>
+                <li>
+                  <strong>Booking Confirmation:</strong> Session appointments are secured upon scheduling via Cal.id and receiving confirmation.
+                </li>
+                <li>
+                  <strong>No Refund Clause:</strong> Payments made for individual sessions or workshops are non-refundable once booked. No exceptions or partial refunds will be provided for cancellations initiated by the client.
+                </li>
+                <li>
+                  <strong>Rescheduling Policy:</strong> If you need to reschedule a confirmed session, you must notify us at least <strong>24 hours in advance</strong>. Rescheduling requests made with less than 24 hours notice may be treated as a missed session and forfeited.
+                </li>
+                <li>
+                  <strong>Punctuality:</strong> Sessions begin promptly at the scheduled time. Arriving late will shorten the remaining duration of your session without extensions.
+                </li>
               </ul>
             </section>
 
@@ -109,7 +103,9 @@ export default function TermsOfServicePage() {
                   If you or someone you know is experiencing a life-threatening mental health emergency, self-harm crisis, or immediate medical distress, please contact emergency medical services or reach out to official helpline services:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-xs">
-                  <li><strong>Tele-MANAS (India National Mental Health Helpline):</strong> 14416 / 1800-891-4416</li>
+                  <li>
+                    <strong>Tele-MANAS (India National Mental Health Helpline):</strong> 14416 / 1800-891-4416
+                  </li>
                 </ul>
               </div>
             </section>
@@ -134,10 +130,25 @@ export default function TermsOfServicePage() {
                 All workshop content, site branding, presentation slides, and original literature provided by Purnam Counselling remain the intellectual property of Thernika R. These terms are governed by the laws of India, under the jurisdiction of courts in Coimbatore, Tamil Nadu.
               </p>
               <div className="pt-2 text-xs sm:text-sm text-stone-500 dark:text-stone-400">
-                <p>For inquiries regarding these terms, contact us at <a href="mailto:thernika.purnam@gmail.com" className="text-emerald-600 dark:text-emerald-400 hover:underline">thernika.purnam@gmail.com</a> or <a href="tel:+919750714144" className="text-emerald-600 dark:text-emerald-400 hover:underline">+91-9750714144</a>.</p>
+                <p>
+                  For inquiries regarding these terms, contact us at{' '}
+                  <a
+                    href="mailto:thernika.purnam@gmail.com"
+                    className="text-emerald-600 dark:text-emerald-400 hover:underline"
+                  >
+                    thernika.purnam@gmail.com
+                  </a>{' '}
+                  or{' '}
+                  <a
+                    href="tel:+919750714144"
+                    className="text-emerald-600 dark:text-emerald-400 hover:underline"
+                  >
+                    +91-9750714144
+                  </a>
+                  .
+                </p>
               </div>
             </section>
-
           </div>
         </div>
       </main>
