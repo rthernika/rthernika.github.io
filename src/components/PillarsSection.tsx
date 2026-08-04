@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { GraduationCap, Heart, Users, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export default function PillarsSection() {
@@ -122,13 +123,13 @@ export default function PillarsSection() {
                 </div>
 
                 <div className="pt-4 border-t border-stone-100 dark:border-emerald-800/30">
-                  <a
-                    href="#counselling"
+                  <Link
+                    href="/#counselling"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1e3d32] dark:text-emerald-300 hover:text-[#d97706] dark:hover:text-amber-300 transition-colors group/link"
                   >
                     <span>{pillar.linkText}</span>
                     <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             );

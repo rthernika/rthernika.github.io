@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Calendar, Award, HeartHandshake, Sparkles, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
@@ -52,20 +53,20 @@ export default function Hero() {
 
             {/* CTA Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-              <a
-                href="#counselling"
+              <Link
+                href="/#counselling"
                 className="inline-flex items-center justify-center gap-3 bg-[#1e3d32] hover:bg-[#2c5949] text-white text-base font-semibold px-7 py-3.5 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Calendar className="w-5 h-5 text-[#d97706]" />
                 <span>Book 1-on-1 Session</span>
-              </a>
-              <a
-                href="#workshops"
+              </Link>
+              <Link
+                href="/#workshops"
                 className="inline-flex items-center justify-center gap-2 bg-white dark:bg-[#1a3028] hover:bg-stone-50 dark:hover:bg-[#234237] text-[#1e3d32] dark:text-emerald-300 text-base font-semibold px-6 py-3.5 rounded-full border border-stone-300 dark:border-emerald-700/50 transition-all hover:border-[#1e3d32]/40 dark:hover:border-emerald-500/50 shadow-sm"
               >
                 <span>Explore Workshops</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Micro Highlights */}

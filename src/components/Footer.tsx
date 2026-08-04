@@ -99,22 +99,22 @@ export default function Footer() {
             <h4 className="text-base font-bold font-serif text-emerald-300">Quick Navigation</h4>
             <ul className="space-y-2.5 text-sm text-stone-300">
               <li>
-                <a href="#home" className="hover:text-white transition-colors">Home</a>
+                <Link href="/#home" className="hover:text-white transition-colors">Home</Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About Thernika</a>
+                <Link href="/#about" className="hover:text-white transition-colors">About Thernika</Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Services</a>
+                <Link href="/#services" className="hover:text-white transition-colors">Services</Link>
               </li>
               <li>
-                <a href="#counselling" className="hover:text-white transition-colors">1-on-1 Counselling</a>
+                <Link href="/#counselling" className="hover:text-white transition-colors">1-on-1 Counselling</Link>
               </li>
               <li>
-                <a href="#workshops" className="hover:text-white transition-colors">Workshops</a>
+                <Link href="/#workshops" className="hover:text-white transition-colors">Workshops</Link>
               </li>
               <li>
-                <a href="#media" className="hover:text-white transition-colors">Social Media</a>
+                <Link href="/#media" className="hover:text-white transition-colors">Social Media</Link>
               </li>
             </ul>
           </div>

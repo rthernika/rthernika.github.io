@@ -67,7 +67,7 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav className="hidden xl:flex items-center gap-5">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-[#1e3d32] dark:hover:text-emerald-300 ${
@@ -77,7 +77,7 @@ export default function Header() {
                 }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -135,7 +135,7 @@ export default function Header() {
         <div className="xl:hidden glass-nav border-b border-stone-200 dark:border-emerald-800/40 px-4 pt-4 pb-6 mt-3 animate-in fade-in slide-in-from-top-5 duration-200">
           <div className="flex flex-col gap-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -146,7 +146,7 @@ export default function Header() {
                 }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
 
             <div className="pt-2 border-t border-stone-200 dark:border-emerald-800/40 mt-1 flex flex-col gap-2">

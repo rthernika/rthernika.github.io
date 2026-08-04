@@ -42,14 +42,29 @@ const DEFAULT_HEADERS = {
 async function fetchText(url: string, timeoutMs = 8000): Promise<string> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  const isBrowser = typeof window !== 'undefined';
+
   try {
-    const res = await fetch(url, {
-      headers: DEFAULT_HEADERS,
+    const fetchOptions: RequestInit = {
       signal: controller.signal,
-      next: { revalidate: 3600 },
-    });
+    };
+
+    if (isBrowser) {
+      fetchOptions.cache = 'no-store';
+    } else {
+      fetchOptions.headers = DEFAULT_HEADERS;
+      (fetchOptions as Record<string, unknown>).next = { revalidate: 60 };
+    }
+
+    let finalUrl = url;
+    if (url.includes('docs.google.com/spreadsheets')) {
+      const sep = url.includes('?') ? '&' : '?';
+      finalUrl = `${url}${sep}_t=${Date.now()}`;
+    }
+
+    const res = await fetch(finalUrl, fetchOptions);
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status} for ${url}`);
+      throw new Error(`HTTP ${res.status} for ${finalUrl}`);
     }
     return await res.text();
   } finally {
