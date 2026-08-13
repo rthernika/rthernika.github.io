@@ -166,8 +166,31 @@ export async function getYouTubeShortsFromSheet(): Promise<YouTubeShort[]> {
 }
 
 /**
+ * Helper to dynamically resolve a fresh, valid image URL for an Instagram post or reel.
+ * Extracts the post shortcode and uses Instagram's dynamic media endpoint.
+ */
+export async function resolveInstagramImageUrl(
+  postUrl: string,
+  fallbackUrl?: string
+): Promise<string> {
+  const match = postUrl.match(/\/(p|reel|reels)\/([a-zA-Z0-9_-]+)/i);
+  const shortcode = match ? match[2] : null;
+
+  if (!shortcode) {
+    return fallbackUrl || '';
+  }
+
+  // This site is deployed as a static export (GitHub Pages), so there is no
+  // server available at runtime to proxy Instagram's CDN. Images for each
+  // shortcode are pre-fetched at build time by scripts/fetch-instagram-images.mjs
+  // and written to /public/instagram/<shortcode>.jpg — reference that static
+  // asset here instead of a (non-existent, on GitHub Pages) API route.
+  return `/instagram/${shortcode}.jpg`;
+}
+
+/**
  * 2. Retrieve Instagram Posts & Reels metadata from Google Sheet GID 1611474361
- * Automatically parses urls, title, and image_urls columns from Sheet CSV
+ * Automatically parses urls, title, and dynamically resolves fresh image_urls
  */
 export async function getInstagramPostsFromSheet(): Promise<InstagramPost[]> {
   try {
@@ -176,29 +199,33 @@ export async function getInstagramPostsFromSheet(): Promise<InstagramPost[]> {
 
     if (rows.length < 2) return [];
 
-    const posts = rows.slice(1).map((row, idx) => {
-      const postUrl = row[0] || '';
-      const rawTitle = row[1] || '';
-      const imageUrl = row[2] || '';
+    const posts = await Promise.all(
+      rows.slice(1).map(async (row, idx) => {
+        const postUrl = row[0] || '';
+        const rawTitle = row[1] || '';
+        const rawImageUrl = row[2] || '';
 
-      let title = rawTitle.split('\n')[0].replace(/#\w+/g, '').trim();
-      if (!title && rawTitle) {
-        title = rawTitle.replace(/#\w+/g, '').trim();
-      }
-      if (title.length > 90) {
-        title = title.substring(0, 90).trim() + '...';
-      }
+        let title = rawTitle.split('\n')[0].replace(/#\w+/g, '').trim();
+        if (!title && rawTitle) {
+          title = rawTitle.replace(/#\w+/g, '').trim();
+        }
+        if (title.length > 90) {
+          title = title.substring(0, 90).trim() + '...';
+        }
 
-      const shortcodeMatch = postUrl.match(/\/(p|reel)\/([a-zA-Z0-9_-]+)/);
-      const shortcode = shortcodeMatch ? shortcodeMatch[2] : String(idx + 1);
+        const shortcodeMatch = postUrl.match(/\/(p|reel|reels)\/([a-zA-Z0-9_-]+)/i);
+        const shortcode = shortcodeMatch ? shortcodeMatch[2] : String(idx + 1);
 
-      return {
-        id: shortcode,
-        title: title || `Instagram Post #${idx + 1}`,
-        link: postUrl,
-        imageUrl: imageUrl,
-      };
-    });
+        const imageUrl = await resolveInstagramImageUrl(postUrl, rawImageUrl);
+
+        return {
+          id: shortcode,
+          title: title || `Instagram Post #${idx + 1}`,
+          link: postUrl,
+          imageUrl: imageUrl,
+        };
+      })
+    );
 
     return posts.filter((p) => p.link && p.link.includes('instagram.com') && p.imageUrl);
   } catch (err) {

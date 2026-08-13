@@ -27,32 +27,28 @@ interface LinkedInArticle {
 
 const INITIAL_INSTAGRAM_POSTS: RssPost[] = [
   {
-    id: '1',
+    id: 'DbYBQEDJvHp',
     title: 'Three things to teach your child🌸',
     link: 'https://www.instagram.com/reel/DbYBQEDJvHp/',
-    imageUrl:
-      'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/759384042_18581153047067426_2077064107607264342_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&ig_cache_key=Mzk1MTkxNDE3NDkyMzYwMDM2MTE4NTgxMTUzMDQ4MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=6-mR2EdmPa0Q7kNvwGmxKLt&_nc_oc=AdokkdM5uCsqta3wvBRQURMlKW1H4rmG1WduGcpA9sZ0jWeRdeq0pDCHuppPS63poP4&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQFg36oCOjmhn8XzqlOWRc6e39vYh_l54_bELBcU6XPVTQ&oe=6A73BBE4',
+    imageUrl: '/instagram/DbYBQEDJvHp.jpg',
   },
   {
-    id: '2',
+    id: 'C-VFF56SuIV',
     title: 'Debunking Breastfeeding Myths with A Toddler Thing',
     link: 'https://www.instagram.com/reel/C-VFF56SuIV/',
-    imageUrl:
-      'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/755870260_18580292644067426_464278745766578888_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&_nc_cat=100&ig_cache_key=Mzk0OTczNTQyODY4NjgwMzI0Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMzA3Mi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=6ThwYE1ZJ_oQ7kNvwFNG0hw&_nc_oc=AdolB2pXwBjgNGnmtcW4PqCxAFh6SK0KXjLheC4i-JtzFlQkg1iuAMsXAZOBXBqBIio&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQEKyePv4ga8Ovi-349rEjVSYct3sQ5eLzstCj8ZCS5lVQ&oe=6A73E2E8',
+    imageUrl: '/instagram/C-VFF56SuIV.jpg',
   },
   {
-    id: '3',
+    id: 'DZ7pc7cpFTO',
     title: 'Cultivating a Non-Judgmental Mindset',
     link: 'https://www.instagram.com/p/DZ7pc7cpFTO/',
-    imageUrl:
-      'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/753225000_18579350671067426_5161904364014136964_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=Mzk0NzI0NzQ4NDk1MjM4ZG5OTE4NTc5MzUwNjY4MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=o8iWeAWZXyAQ7kNvwEgXYui&_nc_oc=AdqJaWhKmEy59i4hHoG_wN08kIc3En13gB9BYhUNVKiAnQHMmWGvTansPtfvZ2idUkU&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQE-O0eEotbBEekl4rBNwgro-SOrN52VeAEXwqTQUJ9MmA&oe=6A73E0C2',
+    imageUrl: '/instagram/DZ7pc7cpFTO.jpg',
   },
   {
-    id: '4',
+    id: 'DVQzPHFkz0w',
     title: 'Toddler Tantrums & Mindful Parenting Hacks',
     link: 'https://www.instagram.com/reel/DVQzPHFkz0w/',
-    imageUrl:
-      'https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/742103548_18575781745067426_4766865731777493039_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=104&ig_cache_key=MzkzODIwMTE5OTk1MTkwOTM0MDE4NTc1NzgxNzM5MDY3NDI2.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjEyOTAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=a-GZpzhg5qsQ7kNvwHCpAFl&_nc_oc=Adq9uvSuren-U_YYC8uLy1iy0dz4U6Aa7S55Cajw7p1eZDz_rps9YvKJ3n8IWxfxvyM&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=l2LmRGu6WcV89TUGhz36Fg&_nc_ss=7c689&oh=00_AQF9kNrWh9Zl-Wh1pOkTW5iH3BYLSvyFtbFUlNzUAI9wcA&oe=6A73E015',
+    imageUrl: '/instagram/DVQzPHFkz0w.jpg',
   },
 ];
 
@@ -281,6 +277,22 @@ export default function MediaSection() {
                               alt={post.title}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                               loading="lazy"
+                              referrerPolicy="no-referrer"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                if (!target.dataset.retried) {
+                                  target.dataset.retried = 'true';
+                                  // Inline placeholder — avoids a second failed
+                                  // network request if the build-time image
+                                  // fetch (scripts/fetch-instagram-images.mjs)
+                                  // didn't produce a file for this shortcode.
+                                  target.src =
+                                    'data:image/svg+xml;utf8,' +
+                                    encodeURIComponent(
+                                      '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="100%" height="100%" fill="#f5f0e8"/></svg>'
+                                    );
+                                }
+                              }}
                             />
                             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2 text-white">
                               <p className="text-[10px] font-medium line-clamp-2 leading-tight drop-shadow-sm">
