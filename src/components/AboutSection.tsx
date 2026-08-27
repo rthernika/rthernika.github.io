@@ -291,8 +291,7 @@ export default function AboutSection() {
         {/* Download Resume Button */}
         <div className="mt-12 text-center">
           <a
-            href="/Resources/Thernika_Resume.pdf"
-            download="Thernika_Resume.pdf"
+            href="https://docs.google.com/document/d/11WwzPiqsb49gLauOBUxtHAymFopq8qoC/export?format=pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 bg-[#1e3d32] hover:bg-[#2c5949] dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
