@@ -42,10 +42,16 @@ export default function JsonLd() {
       '@type': 'Person',
       'name': 'Thernika R',
       'jobTitle': 'Psychologist & Perinatal Mental Health Counsellor',
-      'worksFor': {
-        '@type': 'Organization',
-        'name': 'Purnam Counselling',
-      },
+      'worksFor': [
+        {
+          '@type': 'MedicalOrganization',
+          'name': 'KMCH Hospitals, Coimbatore',
+        },
+        {
+          '@type': 'Organization',
+          'name': 'Purnam Counselling',
+        },
+      ],
       'alumniOf': [
         { '@type': 'EducationalOrganization', 'name': 'Bharathiar University' },
         { '@type': 'EducationalOrganization', 'name': 'Jansons School of Business' },

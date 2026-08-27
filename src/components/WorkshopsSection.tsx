@@ -26,6 +26,7 @@ export default function WorkshopsSection() {
   ];
 
   const partners = [
+    'KMCH Hospitals',
     'NGP College',
     'PSGR Krishnammal College for Women',
     'Vellalar Institute of Arts and Science',

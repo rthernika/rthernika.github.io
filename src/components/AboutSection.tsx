@@ -6,6 +6,12 @@ import { Award, GraduationCap, Briefcase, Globe, CheckCircle, Sparkles, ShieldCh
 export default function AboutSection() {
   const milestones = [
     {
+      title: 'Perinatal Mental Health Counsellor',
+      org: 'KMCH Hospitals, Coimbatore',
+      period: 'Sept 2026 - Present',
+      desc: 'Conducting perinatal mental health workshops for expectant mothers, providing maternal emotional wellbeing guidance and psychological support.',
+    },
+    {
       title: 'Psychologist (Self-Employed)',
       org: 'Purnam Counselling',
       period: 'March 2024 - Present',
